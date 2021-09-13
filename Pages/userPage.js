@@ -99,7 +99,7 @@ export default function userPage({ navigation }) {
                         <Text style={{ fontSize: 18, color: "#FFF4E1" }}>Logout</Text>
                     </View>
                 </TouchableOpacity>
-                <Text style={styles.version}>Version 1.0.0</Text>
+                <Text style={styles.version}>Version 1.0.2</Text>
             </View>
 
         </View>

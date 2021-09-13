@@ -2,11 +2,11 @@
   "expo": {
     "name": "Lets Cooking",
     "slug": "LetsCooking",
-    "version": "1.0.0",
+    "version": "1.0.2",
     "orientation": "portrait",
     "icon": "./assets/appsIcon.png",
     "splash": {
-      "image": "./assets/SplashScreen.png",
+      "image": "./assets/Splash_Screen.png",
       "resizeMode": "cover",
       "backgroundColor": "#ffffff"
     },
@@ -19,11 +19,11 @@
     "ios": {
       "supportsTablet": true,
       "bundleIdentifier": "com.mochalattea.letscooking",
-      "buildNumber": "1.0.0"
+      "buildNumber": "1.0.2"
     },
     "android": {
       "adaptiveIcon": {
-        "foregroundImage": "./assets/adaptive-icon.png",
+        "foregroundImage": "./assets/appsIcon.png",
         "backgroundColor": "#FFFFFF"
       },
       "package": "com.mochalattea.letscooking",
@@ -31,6 +31,8 @@
     },
     "web": {
       "favicon": "./assets/appsLogo.png"
-    }
+    },
+    "description": "Simple apps for searching food recipe",
+    "githubUrl": "https://github.com/GalihWiyono/letscooking"
   }
 }

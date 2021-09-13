@@ -4,7 +4,7 @@ import firebase from 'firebase'
 import axios from 'axios';
 import { useFocusEffect } from '@react-navigation/core';
 
-export default function BookmarkPage() {
+export default function BookmarkPage({navigation}) {
     const db = firebase.firestore();
     const [bookmarkMenu, setbookmarkMenu] = useState([])
     const [isLoading, setisLoading] = useState(true)
@@ -14,6 +14,11 @@ export default function BookmarkPage() {
     //     if (!isLoading) return;
     //     getUserData();
     // }, [])
+
+    const detailsMenu = (value) => {
+        console.log("goto detailpage from bookmark");
+        navigation.navigate('DetailsPage', { value });
+    }
 
     useFocusEffect(
         useCallback(
@@ -144,9 +149,6 @@ export default function BookmarkPage() {
     }
 
 
-
-
-
     return (
         <View style={styles.container}>
             <StatusBar
@@ -168,26 +170,28 @@ export default function BookmarkPage() {
                 keyExtractor={(item) => item.idMeal}
                 renderItem={({ item }) => {
                     return (
-                        <View style={styles.bookmarkListContainer}>
-                            <View style={styles.bookmarkListContent}>
-                                <Image
-                                    source={{ uri: item.strMealThumb }}
-                                    style={{ width: 50, height: 50, borderRadius: 10 }}
-                                />
-
-                                <View style={styles.bookmarkListContentText}>
-                                    <Text style={{ textDecorationLine: "underline", fontWeight: "bold", fontSize: 14, opacity: 1 }}>{item.strMeal}</Text>
-                                    <Text style={{ color: "grey", fontSize: 10, fontWeight: "bold", opacity: 1 }}>{item.strArea}, {item.strCategory}</Text>
-                                </View>
-
-                                <TouchableOpacity onPress={() => deleteBookmark(item.idMeal)}>
+                        <TouchableOpacity onPress={() => detailsMenu(item)}>
+                            <View style={styles.bookmarkListContainer}>
+                                <View style={styles.bookmarkListContent}>
                                     <Image
-                                        source={require("../assets/icon/active_bookmark.png")}
-                                        style={{ width: 30, height: 30, marginTop: 10 }}
+                                        source={{ uri: item.strMealThumb }}
+                                        style={{ width: 50, height: 50, borderRadius: 10 }}
                                     />
-                                </TouchableOpacity>
+
+                                    <View style={styles.bookmarkListContentText}>
+                                        <Text style={{ textDecorationLine: "underline", fontWeight: "bold", fontSize: 14, opacity: 1 }}>{item.strMeal}</Text>
+                                        <Text style={{ color: "grey", fontSize: 10, fontWeight: "bold", opacity: 1 }}>{item.strArea}, {item.strCategory}</Text>
+                                    </View>
+
+                                    <TouchableOpacity onPress={() => deleteBookmark(item.idMeal)}>
+                                        <Image
+                                            source={require("../assets/icon/active_bookmark.png")}
+                                            style={{ width: 30, height: 30, marginTop: 10 }}
+                                        />
+                                    </TouchableOpacity>
+                                </View>
                             </View>
-                        </View>
+                        </TouchableOpacity>
                     )
                 }}
 
